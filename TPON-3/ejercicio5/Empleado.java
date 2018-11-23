@@ -2,21 +2,19 @@ package ejercicio5;
 
 import java.util.concurrent.Exchanger;
 
-public class Visitante implements Runnable{
+public class Empleado implements Runnable{
 	private String nombre;
-	private Alimento alimento;
 	private Exchanger intercambio;
-	private Object bono;
 	
-	public Visitante(String nombre , Exchanger intercambio , Object bono) {
+	public Empleado(String nombre , Exchanger intercambio) {
 		this.nombre = nombre;
 		this.intercambio = intercambio;
-		this.bono = bono;
 	}
 	
 	public void run() {
 		try {
-		} catch (InterruptedException e) {
+			
+		} catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
