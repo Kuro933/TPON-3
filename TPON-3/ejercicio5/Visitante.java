@@ -13,6 +13,7 @@ public class Visitante implements Runnable{
 		this.nombre = NameGenerator.generarNombre();
 		this.intercambio = intercambio;
 		this.regalo = new Regalo();
+		this.r = new Random();
 	}
 	
 	public void run() {
