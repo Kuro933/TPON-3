@@ -19,6 +19,7 @@ public class Empleado implements Runnable{
 			while(true) {
 				galleta = cinta.take();		//Toma la galleta de la cinta.
 				System.out.println("Empleado " + Thread.currentThread().getName() + " agarro una galleta de la cinta.");
+				Thread.sleep(1000);			//El empleado tarda hasta llegar al cliente
 				zonaMuestra.put(galleta);	//Le ofrece una galleta a un cliente
 				System.out.println("Empleado " + Thread.currentThread().getName() + " entrego una galleta.");
 			}

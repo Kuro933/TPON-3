@@ -15,10 +15,9 @@ public class Horno implements Runnable{
 	
 	public void run() {
 		try {
-			int num = 1;	//Cuenta cuantas galletas va horneando.
 			while(true) {
 				Thread.sleep(r.nextInt(1000)+1000);		//Se esta horneando una galleta
-				buffer.put(new Galleta(num));			//Coloca la galleta en el buffer
+				buffer.put(new Galleta());				//Coloca la galleta en el buffer
 				System.out.println("El horno " + Thread.currentThread().getName() + " horneo una galleta.");
 			}
 		} catch(Exception e) {

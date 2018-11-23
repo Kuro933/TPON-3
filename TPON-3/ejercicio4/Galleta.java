@@ -5,20 +5,18 @@ import java.util.concurrent.TimeUnit;
 
 public class Galleta implements Delayed{
 	
-	private int id;
-	private long tiempoDeEnfriamiento;	//Tiempo que tarda en enfriarse la galleta
+	private long tiempoDeEnfriamiento;	//Tiempo que tarda en enfriarse la galleta.
 	
 	
-	public Galleta(int id) {
-		this.id = id;
-		this.tiempoDeEnfriamiento = 10000;
+	public Galleta() {
+		this.tiempoDeEnfriamiento = System.currentTimeMillis() + 7000;	//Tarda 7 segundos en enfriarse luego de que se crea.
 	}
 	
 	@Override
-	public int compareTo(Delayed otro) {
+	public int compareTo(Delayed otra) {
 		//Compara su tiempo con otra galleta para saber si tiene prioridad en la DelayQueue o no.
 		int devolucion;
-	    Galleta otraGalleta = (Galleta) otro;
+	    Galleta otraGalleta = (Galleta) otra;
 	    
 	    if (this.tiempoDeEnfriamiento < otraGalleta.tiempoDeEnfriamiento) {
 	        devolucion = -1;

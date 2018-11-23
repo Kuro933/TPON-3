@@ -19,6 +19,7 @@ public class BrazoMecanico implements Runnable{
 			while(true) {
 				galleta = buffer.take();		//El brazo agarra la galleta del buffer
 				System.out.println("El brazo " + Thread.currentThread().getName() + " agarro una galleta.");
+				Thread.sleep(1000);				//Al brazo le toma un tiempo en poner la galleta en la zona de enfriamiento.
 				zonaEnfriamiento.put(galleta);	//Coloca la galleta en la zona de enfriamiento.
 				System.out.println("El brazo " + Thread.currentThread().getName() + " coloco una galleta en la zona de enfriamiento.");
 			}
