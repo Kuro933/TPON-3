@@ -39,10 +39,6 @@ public class TestEj1 {
 			hilo[j].start();
 		}
 		
-		
-//		for(int k=0;k<hilosS.length;k++) {
-//			hilo[k].join();
-//		}
 	}
 
 		
@@ -53,21 +49,3 @@ public class TestEj1 {
 	
 	
 	
-	
-	
-	
-	
-//	int n,prod;
-//	int cant=1;
-//	Scanner sc = new Scanner(System.in);
-//	
-//	System.out.print("�cuantas sucesiones desea?\n " );
-//	n = sc.nextInt();
-//	
-//	while(cant <= n) {
-//		prod = (cant * (cant + 1));
-//		int result = prod / 2;
-//		System.out.println("el numero de triangulares en la sucesion " + cant + " es " + result);
-//		cant++;
-//		prod = 0;
-//	}
