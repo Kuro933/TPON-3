@@ -8,8 +8,16 @@ public class Transbordador implements Runnable{
 	}
 	public void run() {
 		while(true) {
+			try{
 			espacio.ir();
+			Thread.sleep(1000);
+			System.out.println("El transbordador llego al oeste");
 			espacio.volver();
+			Thread.sleep(1000);
+			System.out.println("El transbordador llego al este");
+			}catch(Exception e){
+				
+			}
 			
 		}
 	}

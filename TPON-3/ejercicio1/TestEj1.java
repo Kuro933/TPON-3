@@ -61,7 +61,7 @@ public class TestEj1 {
 //	int cant=1;
 //	Scanner sc = new Scanner(System.in);
 //	
-//	System.out.print("¿cuantas sucesiones desea?\n " );
+//	System.out.print("ï¿½cuantas sucesiones desea?\n " );
 //	n = sc.nextInt();
 //	
 //	while(cant <= n) {

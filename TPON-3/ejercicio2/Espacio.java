@@ -1,102 +1,71 @@
 package ejercicio2;
 
+import java.util.concurrent.CyclicBarrier;
+import java.util.concurrent.LinkedBlockingQueue;
+
 public class Espacio {
 
-
 	private int cantActual, cantLleno;
-	private boolean este, oeste;
+	private CyclicBarrier transbordador;
+	private LinkedBlockingQueue<Object> autoEntrado;
+	private LinkedBlockingQueue<Object> autoSaliendo;
 
 	public Espacio(int actual, int lleno) {
 		this.cantActual = actual;
 		this.cantLleno = lleno;
-		this.este = true;
-		this.oeste = false;
+		this.transbordador = new CyclicBarrier(11);
+		this.autoEntrado = new LinkedBlockingQueue<Object>();
+		this.autoSaliendo = new LinkedBlockingQueue<Object>();
 	}
 
-	public synchronized void subir(Auto auto) {
-		/*
-		 * Metodo que realiza la accion de un auto al momento de intentar subir al
-		 * transbordador
-		 */
-
+	public void subir(Auto auto) {
 		try {
-			while (cantActual >= cantLleno || !este) {
-				/* Pregunta si esta lleno o ya partio */
-				System.out.println("\n Transbordador lleno o no se encuentra en la zona de embarque");
-				this.wait();
-			}
-			this.cantActual++;
-			System.out.println("Auto " + auto.getId() + " ha subido al transb. Cantidad de autos: " + this.cantActual);
-			/* Notifica que hubo un cambio */
-			this.notify();
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
 
-	}
-
-	public synchronized void bajar(Auto auto) {
-		/*
-		 * Metodo que realiza la accion de un auto al momento de bajar al transbordador
-		 */
-		try {
-			while (!oeste) {
-				/* Pregunta si ya llegaron al oeste */
-				System.out
-						.println("Auto " + auto.getId() + " no puede bajar, el transbordador no ha llegado a destino");
-				this.wait();
-			}
-			System.out.println("Auto " + auto.getId() + " ha bajado");
-			this.cantActual--;
-			this.notifyAll(); /*
-								 * Utilizamos este notifyAll para asegurarnos de que el transbordador se
-								 * despierte y chequee que ya hayan bajado todos los autos
-								 */
-		} catch (InterruptedException e) {
+			this.autoEntrado.take();
+			System.out.println("auto " + auto.getId() + " subio");
+			this.transbordador.await();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public synchronized void ir() {
-
-		/*
-		 * Metodo que realiza la simulacion del viaje del transbordador de ir desde el
-		 * este al oeste
-		 */
+	public void bajar(Auto auto) {
 		try {
-			while (cantActual < cantLleno) {
-				System.out.println("\n El transbordador esta esperando que suban 10 autos");
-				this.wait();
-			}
-			this.este = false;
-			System.out.println("\n Transbordador viajando");
-			this.oeste = true;
-			System.out.println("\n Tansbordador LLego a la costa oeste");
-			this.notify();
-		} catch (InterruptedException e) {
+
+			this.autoSaliendo.take();
+			System.out.println("Auto " + auto.getId() + " bajo del transbordador");
+			this.transbordador.await();
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public synchronized void volver() {
-		/*
-		 * Metodo que realiza la simulacion del viaje del transbordador de volver desde
-		 * el oeste al este
-		 */
+	public void ir() {
 		try {
-			while (cantActual > 0) {
-				System.out.println("Transbordador esperando que se bajen todos los autos");
-				this.wait();
+			System.out.println("El transbordador esta esperando que entren todos los autos");
+			for (int i = 0; i < 10; i++) {
+				this.autoEntrado.add(i);
 			}
-			System.out.println("..........Transbordador volviendo.........");
-			this.oeste = false;
-			this.este = true;
-			System.out.println("\n Tansbordador LLego a la costa este");
-			this.notify();
-		} catch (InterruptedException e) {
+			this.transbordador.await();
+			System.out.println("El transbordador esta viajando");
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
+
+	public void volver() {
+		try {
+			System.out.println("El transordador esta esperando que bajen todos los autos");
+			for (int j = 0; j < 10; j++) {
+				this.autoSaliendo.add(j);
+			}
+
+			this.transbordador.await();
+			System.out.println("El transbordador esta volviendo");
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
 	}
 
 }
-
