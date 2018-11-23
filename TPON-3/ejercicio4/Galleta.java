@@ -11,18 +11,30 @@ public class Galleta implements Delayed{
 	
 	public Galleta(int id) {
 		this.id = id;
+		this.tiempoDeEnfriamiento = 10000;
 	}
 	
 	@Override
-	public int compareTo(Delayed arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+	public int compareTo(Delayed otro) {
+		//Compara su tiempo con otra galleta para saber si tiene prioridad en la DelayQueue o no.
+		int devolucion;
+	    Galleta otraGalleta = (Galleta) otro;
+	    
+	    if (this.tiempoDeEnfriamiento < otraGalleta.tiempoDeEnfriamiento) {
+	        devolucion = -1;
+	    }else if (this.tiempoDeEnfriamiento > otraGalleta.tiempoDeEnfriamiento) {
+	        devolucion = 1;
+	    } else {
+	    	devolucion = 0;
+	    }
+	 
+	    return devolucion;
 	}
 
 	@Override
-	public long getDelay(TimeUnit arg0) {
-		// TODO Auto-generated method stub
-		return 0;
+	public long getDelay(TimeUnit timeUnit) {
+	    long diferencia = tiempoDeEnfriamiento - System.currentTimeMillis();
+	    return timeUnit.convert(diferencia, TimeUnit.MILLISECONDS);
 	}
 
 }

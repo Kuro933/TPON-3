@@ -5,11 +5,10 @@ import java.util.concurrent.LinkedBlockingQueue;
 
 public class Horno implements Runnable{
 
-	private LinkedBlockingQueue<Object> buffer;
-	private Galleta galleta;
+	private LinkedBlockingQueue<Galleta> buffer;
 	private Random r;
 	
-	public Horno(LinkedBlockingQueue<Object> buffer) {
+	public Horno(LinkedBlockingQueue<Galleta> buffer) {
 		this.buffer = buffer;
 		this.r = new Random();
 	}

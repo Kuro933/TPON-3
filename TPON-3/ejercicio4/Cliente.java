@@ -6,7 +6,6 @@ public class Cliente implements Runnable{
 
 	private String nombre;
 	private SynchronousQueue<Galleta> zonaMuestra;
-	private Galleta galleta;
 	
 	public Cliente(SynchronousQueue<Galleta> zonaMuestra) {
 		this.nombre = NameGenerator.generarNombre();
@@ -15,7 +14,7 @@ public class Cliente implements Runnable{
 	
 	public void run() {
 		try {
-			galleta = zonaMuestra.take();
+			zonaMuestra.take();
 			System.out.println(this.nombre + " tomo la galleta y se la comio.");
 		} catch (Exception e) {
 			e.printStackTrace();
