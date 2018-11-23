@@ -8,12 +8,7 @@ public class Productor implements Runnable {
 	private final int idproductor;
 	private final int TIEMPOESPERA = 1500;
 
-	/**
-	 * Constructor de la clase
-	 * 
-	 * @param contenedor  Contenedor común a los consumidores y el productor
-	 * @param idproductor Identificador del productor
-	 */
+	
 	public Productor(Contenedor contenedor, int idproductor) {
 		this.contenedor = contenedor;
 		this.idproductor = idproductor;
