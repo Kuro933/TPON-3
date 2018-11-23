@@ -4,7 +4,7 @@ public class Espacio {
 
 
 	private int cantActual, cantLleno;
-	boolean este, oeste;
+	private boolean este, oeste;
 
 	public Espacio(int actual, int lleno) {
 		this.cantActual = actual;
