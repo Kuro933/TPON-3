@@ -5,11 +5,7 @@ public class Consumidor implements Runnable
     private final Contenedor contenedor;
     private final int idconsumidor;
  
-    /**
-     * Constructor de la clase
-     * @param contenedor Contenedor común a los consumidores y el productor
-     * @param idconsumidor Identificador del consumidor
-     */
+  
     public Consumidor(Contenedor contenedor, int idconsumidor) 
     {
         this.contenedor = contenedor;
@@ -18,7 +14,7 @@ public class Consumidor implements Runnable
  
     @Override
     /**
-     * Implementación de la hebra
+     * ImplementaciÃ³n de la hebra
      */
     public void run() 
     {
