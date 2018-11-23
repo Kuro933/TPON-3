@@ -2,11 +2,12 @@ package ejercicio5;
 
 import java.util.concurrent.Exchanger;
 
-public class Empleado implements Runnable{
+public class Visitante implements Runnable{
 	private String nombre;
 	private Exchanger intercambio;
+	private Regalo regalo;
 	
-	public Empleado(String nombre , Exchanger intercambio) {
+	public Visitante(String nombre , Exchanger intercambio) {
 		this.nombre = nombre;
 		this.intercambio = intercambio;
 	}
