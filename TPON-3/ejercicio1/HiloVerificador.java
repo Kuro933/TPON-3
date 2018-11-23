@@ -10,7 +10,7 @@ public class HiloVerificador implements Runnable{
 	}
 	
 	public void run(){
-		for(int i=inicio;i<=fin;i++){
+		for(int i=inicio;i < fin ;i++){
 			cont+=buffer.obtenerElem(i);
 		}
 	}

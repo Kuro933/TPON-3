@@ -13,10 +13,9 @@ public class Auto implements Runnable{
 		try {
 			System.out.println("Auto "+this.id+" viajando hacia transbordador");
 			espacio.subir(this);
-			Thread.sleep(1000);
 			espacio.bajar(this);
 			System.out.println("\n El auto "+this.id+" se fue al infinito");
-		}catch(InterruptedException e) {
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
