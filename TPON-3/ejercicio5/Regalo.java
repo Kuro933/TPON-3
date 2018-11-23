@@ -13,7 +13,9 @@ public class Regalo {
 		this.tipo = tipos[r.nextInt(tipos.length-1)];
 	}
 	
-	
+	public String toString() {
+		return this.tipo;
+	}
 	
 	
 }
